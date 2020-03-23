@@ -36,9 +36,14 @@
 #include <stdr_msgs/DeleteRobotAction.h>
 #include <stdr_msgs/RobotIndexedMsg.h>
 #include <stdr_msgs/RobotIndexedVectorMsg.h>
+#include <stdr_msgs/DynamicObstacleMsg.h>
 
 #include <visualization_msgs/Marker.h>
 #include <visualization_msgs/MarkerArray.h>
+
+#include <stdr_msgs/DynamicObstacleVector.h>
+#include <stdr_msgs/AddDynamicObstacle.h>
+#include <stdr_msgs/DeleteDynamicObstacle.h>
 
 #include <stdr_msgs/RfidTagVector.h>
 #include <stdr_msgs/AddRfidTag.h>
@@ -179,6 +184,26 @@ namespace stdr_server {
       **/
       bool deleteRobot(std::string name, stdr_msgs::DeleteRobotResult* result);
 
+      /**
+      @brief Service callback for adding new dynamic obstacle to the environment
+      @param req [stdr_msgs::AddDynamicObstacle::Request &] The request
+      @param res [stdr_msgs::AddDynamicObstacle::Response &] The Response
+      @return bool
+      **/
+      bool addDynamicObstacleCallback(
+        stdr_msgs::AddDynamicObstacle::Request &req,
+        stdr_msgs::AddDynamicObstacle::Response &res);
+
+      /**
+      @brief Service callback for deleting a dynamic obstacle from the environment
+      @param req [stdr_msgs::DeleteDynamicObstacle::Request &] The request
+      @param res [stdr_msgs::DeleteDynamicObstacle::Response &] The Response
+      @return bool
+      **/
+      bool deleteDynamicObstacleCallback(
+        stdr_msgs::DeleteDynamicObstacle::Request &req,
+        stdr_msgs::DeleteDynamicObstacle::Response &res);
+      
       /**
       @brief Service callback for adding new rfid tag to the environment
       @param req [stdr_msgs::AddRfidTag::Request &] The request

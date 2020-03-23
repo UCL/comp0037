@@ -1,0 +1,4 @@
+stdr_msgs/DynamicObstacleMsg newObstacle
+---
+bool success
+string message

@@ -20,6 +20,9 @@ add_message_files(
     RobotIndexedMsg.msg
     RobotIndexedVectorMsg.msg
 
+    DynamicObstacleMsg.msg
+    DynamicObstacleVector.msg
+
     RfidSensorMsg.msg
     RfidSensorMeasurementMsg.msg
     RfidTag.msg
@@ -47,6 +50,9 @@ add_service_files(
     LoadExternalMap.srv
     RegisterGui.srv
     MoveRobot.srv
+
+    AddDynamicObstacle.srv
+    DeleteDynamicObstacle.srv
 
     AddRfidTag.srv
     DeleteRfidTag.srv

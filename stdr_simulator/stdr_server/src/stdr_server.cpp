@@ -182,6 +182,21 @@ namespace stdr_server {
     return true;
   }
 
+
+  /**
+  @brief Service callback for adding new rfid tag to the environment
+  **/
+  bool Server::addDynamicObstacleCallback(
+    stdr_msgs::AddDynamicObstacle::Request &req,
+    stdr_msgs::AddDynamicObstacle::Response &res)
+  {
+
+    //!< Return success
+    res.success = false;
+    return true;
+  }
+
+  
   /**
   @brief Service callback for adding new CO2 source to the environment
   **/
@@ -344,6 +359,14 @@ namespace stdr_server {
     }
     return true;
   }
+
+    bool Server::deleteDynamicObstacleCallback(
+    stdr_msgs::DeleteDynamicObstacle::Request &req,
+    stdr_msgs::DeleteDynamicObstacle::Response &res)
+    {
+      return false;
+    }
+
 
   /**
   @brief Service callback for deleting a CO2 source from the environment
