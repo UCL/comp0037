@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import rospy
 from std_msgs.msg import Int32
-from numpy.random import poisson
+from numpy.random import exponential
 from numpy.random import uniform
 import random
 from time import sleep
@@ -10,9 +10,11 @@ from time import sleep
 
 class Obstacle(object):
 
-    def __init__(self, id, waitLambda, probabilityOfBeingPresent):
+    def __init__(self, id, waitBeta, probabilityOfBeingPresent):
         self.id = int(id)
-        self.waitLambda = waitLambda
+        # Documentation at https://docs.scipy.org/doc/numpy-1.15.0/reference/generated/numpy.random.exponential.html
+        # is wrong. The equation suggests that beta=1/lambda whereas, in fact, beta=lambda
+        self.waitLambda = waitBeta
         self.probabilityOfBeingPresent = probabilityOfBeingPresent
         self.isInSimulation = False
         self.hasBeenDetected = False
@@ -24,7 +26,8 @@ class Obstacle(object):
             rospy.Publisher("/add_obstacle_to_map", Int32, queue_size=1)
         self.removeObstacleFromMapPublisher = \
             rospy.Publisher("/remove_obstacle_from_map", Int32, queue_size=1)
-
+        rospy.logwarn('Added obstacle {} with waitLamba={}, probabilityOfBeingPresent={}'.format(self.id, self.waitLambda, self.probabilityOfBeingPresent))
+        
         sleep(1)
 
     def sameID(self, id):
@@ -38,8 +41,8 @@ class Obstacle(object):
 
         self.hasBeenDetected = True
         
-        # From the Poisson distribution, sample the sleep until time
-        visibleTime = poisson(self.waitLambda)
+        # From the exponential distribution, sample the sleep until time
+        visibleTime = exponential(self.waitLambda)
         self.sleepUntilTime = rospy.Time.now() + rospy.Duration.from_sec(visibleTime)
 
         rospy.logwarn('Obstacle {} detected and will persist for {} seconds'.format(self.id, visibleTime))
@@ -70,8 +73,8 @@ class Obstacle(object):
  
         # If currently being shown, remove it 
         if self.isInSimulation is True:
-            self.self.removeObstacleFromSimulationPublisher.publish(self.id)
-            self.self.removeObstacleFromMapPublisher.publish(self.id)
+            self.removeObstacleFromSimulationPublisher.publish(self.id)
+            self.removeObstacleFromMapPublisher.publish(self.id)
 
         self.hasBeenDetected = False
         
