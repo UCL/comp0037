@@ -88,6 +88,18 @@ namespace stdr_server {
     _sourceVectorPublisherRviz = _nh.advertise<visualization_msgs::MarkerArray>(
       "stdr_server/sources_visualization_markers", 1, true);
 
+    //!< Dynamic obstacles
+
+    _addDynamicObstacleServiceServer = _nh.advertiseService("stdr_server/add_dynamic_obstacle",
+      &Server::addDynamicObstacleCallback, this);
+
+    _deleteDynamicObstacleServiceServer =
+      _nh.advertiseService("stdr_server/delete_dynamic_obstacle",
+      &Server::deleteDynamicObstacleCallback, this);
+
+    _dynamicObstacleServiceServerVectorPublisher = _nh.advertise<stdr_msgs::DynamicObstacleVector>(
+      "stdr_server/dynamic_obstacle_list", 1, true);
+   
     //!< Rfid tags
 
     _addRfidTagServiceServer = _nh.advertiseService("stdr_server/add_rfid_tag",
@@ -190,7 +202,7 @@ namespace stdr_server {
     stdr_msgs::AddDynamicObstacle::Request &req,
     stdr_msgs::AddDynamicObstacle::Response &res)
   {
-
+    ROS_WARN_STREAM("addDynamicObstacleCallback: invoked");
     //!< Return success
     res.success = false;
     return true;
@@ -364,6 +376,7 @@ namespace stdr_server {
     stdr_msgs::DeleteDynamicObstacle::Request &req,
     stdr_msgs::DeleteDynamicObstacle::Response &res)
     {
+      ROS_WARN_STREAM("deleteDynamicObstacleCallback: invoked");
       return false;
     }
 

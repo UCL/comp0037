@@ -244,7 +244,11 @@ class InterfaceTest(unittest.TestCase):
 
 
 if __name__ == '__main__':
+    print 'Hello'
     rospy.init_node('interface_test', anonymous=True, log_level=rospy.INFO)
+    print 'Hello'
     InterfaceTest.connect()
+    print 'Hello'
     rospy.sleep(2.0)
+    print 'Hello'
     rostest.rosrun('stdr_server', 'interface_test', InterfaceTest, sys.argv)

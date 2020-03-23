@@ -1,0 +1,7 @@
+<library path="libstdr_dynamic_obstacle_nodelet">
+  <class name="stdr_dynamic_obstacle/DynamicObstacle" type="stdr_dynamic_obstacle::DynamicObstacle" base_class_type="nodelet::Nodelet">
+    <description>
+      This is a dynamic obstacle nodelet.
+    </description>
+  </class>
+</library>

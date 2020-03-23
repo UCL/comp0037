@@ -384,6 +384,14 @@ namespace stdr_server {
       //!< A general Rviz publisher for all source types
       ros::Publisher _sourceVectorPublisherRviz;
 
+
+      //!< The dynamic obstacle srv server
+      ros::ServiceServer _addDynamicObstacleServiceServer;
+      //!< The deleteRfidTag srv server
+      ros::ServiceServer _deleteDynamicObstacleServiceServer;
+      //!< The rfid tag list publisher
+      ros::Publisher _dynamicObstacleServiceServerVectorPublisher;
+      
       //!< The addRfidTag srv server
       ros::ServiceServer _addRfidTagServiceServer;
       //!< The deleteRfidTag srv server

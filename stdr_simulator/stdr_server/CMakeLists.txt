@@ -8,7 +8,7 @@ find_package(catkin REQUIRED COMPONENTS
     stdr_msgs
     actionlib
     nodelet
-    map_server
+    comp0037_map_server
     visualization_msgs
 )
 
@@ -31,7 +31,7 @@ catkin_package(
     stdr_msgs
     actionlib
     nodelet
-    map_server
+    comp0037_map_server
     visualization_msgs
 )
 

@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <package format="2">
-    <name>stdr_robot</name>
+    <name>stdr_dynamic_obstacle</name>
     <!-- This is a meta package! -->
     <version>0.3.2</version>
-    <description>A simple, flexible and scalable 2D multi-robot simulator.</description>
+    <description>A simple, flexible and scalable 2D multi-dynamic_obstacle simulator.</description>
     <maintainer email="zalidis@gmail.com">Chris Zalidis</maintainer>
     <license>GPLv3</license>
     <url type="website">http://stdr-simulator-ros-pkg.github.io</url>
@@ -32,7 +32,7 @@
     <depend>geometry_msgs</depend>
     <depend>sensor_msgs</depend>
     <export>
-        <nodelet plugin="${prefix}/robot_plugins.xml" />
+        <nodelet plugin="${prefix}/dynamic_obstacle_plugins.xml" />
     </export>
     <!-- <export><metapackage/></export> -->
 </package>

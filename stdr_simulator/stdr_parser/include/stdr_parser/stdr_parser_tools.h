@@ -53,6 +53,8 @@ namespace YAML
 #include "geometry_msgs/Pose2D.h"
 #include "geometry_msgs/Point.h"
 
+#include "stdr_msgs/DynamicObstacleMsg.h"
+
 #include "stdr_parser/stdr_parser_exceptions.h"
 
 //!< Transforms a float number to string

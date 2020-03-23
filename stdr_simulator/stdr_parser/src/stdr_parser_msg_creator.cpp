@@ -1044,6 +1044,17 @@ namespace stdr_parser
   }
   
  
-
+  /**
+  @brief Creates a message from a parsed file - template specialization for stdr_msgs::DynamicObstacleMsg
+  @param n [Node*] The root node
+  @return The message
+  **/
+  template <> 
+  stdr_msgs::DynamicObstacleMsg MessageCreator::createMessage(Node *n,unsigned int id)
+  {
+    stdr_msgs::DynamicObstacleMsg msg;
+    ROS_WARN_STREAM("stdr_msgs::DynamicObstacleMsg MessageCreator::createMessage");
+    return msg;
+  }
 }
 
